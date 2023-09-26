@@ -1,0 +1,178 @@
+<html>
+
+<head>
+    <title></title>
+    <base href="./">
+    <link href="https://fonts.googleapis.com/css2?family=Franklin+Gothic+ATF&display=swap" rel="stylesheet">
+    <script src="asset/script/d3/d3.v5.min.js"></script>
+    <script src='./asset/script/custom/bubbleTimeline.js'></script>
+    <style>
+        /* @font-face {
+            font-family: "Franklin Gothic ATF Regular";
+            src: url("https://db.onlinewebfonts.com/t/b9561c58f8199daedf9095bf03ae7917.ttf")format("truetype");
+        } */
+
+        body,
+        html {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+            font-family: 'Franklin Gothic ATF', sans-serif;
+            ;
+        }
+
+        .content {
+            height: calc(100% - 22px);
+            width: 100%;
+
+        }
+
+        h3 {
+            margin-bottom: 0px;
+        }
+
+        #bubbleEle {
+            position: relative;
+            height: calc(100% - 118.5px);
+            width: 100%;
+        }
+
+        div#tooltip {
+            position: absolute;
+            width: 200px;
+            padding: 2px;
+            font-family: 'Franklin Gothic ATF', sans-serif;
+            font-size: 12px;
+            border: 0px;
+            pointer-events: none;
+        }
+
+        .headerContent,
+        .footerContent {
+            width: 100%;
+            display: flex;
+        }
+
+        .footerContent {
+            justify-content: flex-start;
+        }
+
+        .titleH {
+            /* width: 800px; */
+            display: flex;
+            justify-self: center;
+            flex-direction: column;
+        }
+
+        .titleHeader {
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 28px;
+            font-style: normal;
+            margin: 5px;
+
+        }
+
+        .headerDescription {
+            font-size: 17px;
+            margin: 0px 5px;
+        }
+
+
+        #gAxis.tick line {
+            visibility: hidden;
+        }
+
+        .footerText {
+            color: rgb(85, 85, 85);
+            font-size: 12px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 15.5px;
+        }
+
+        .subFooter {
+            display: flex;
+            justify-content: space-between;
+            color: rgb(85, 85, 85);
+            font-weight: normal;
+            font-family: "BC Sklonar";
+            text-transform: uppercase;
+            font-size: 11px;
+            text-decoration: none;
+            font-style: normal;
+            border-top: 1px solid rgb(153, 153, 153);
+            padding: 5px 0px 0px;
+            -webkit-box-align: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .subFooter-left {
+            font-family: Franklin Gothic Atf, sans-serif;
+            text-transform: none;
+            color: rgb(85, 85, 85);
+            width: 50%;
+        }
+
+        .subFooter-right {
+            font-family: "BC Sklonar";
+            text-transform: none;
+            color: rgb(85, 85, 85);
+            width: 50%;
+            text-align: right;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <h3>US map</h3> -->
+    <div class="content">
+        <div class="headerContent">
+            <diV class="titleH">
+                <h4 class="titleHeader">Members with AAPI or Indigenous backgrounds have grown</h4>
+                <div class="headerDescription">Members of the U.S. House of Representatives who identified as Asian,
+                    Native Hawaiian or Pacific Islander, or identified as American Indian or Alaska Native, 87th to
+                    118th Congress</div>
+            </diV>
+        </div>
+        <div id="bubbleEle"></div>
+        <div class="footerContent">
+            <diV class="titleH">
+                <div class="footerText">Representatives may also identify with another racial or ethnic group.</div>
+            </diV>
+
+        </div>
+        <div class="subFooter">
+            <div  class="subFooter-left" ></div>
+            <div  class="subFooter-right">
+                SOURCES: U.S. HOUSE OF REPRESENTATIVES, JERRY STUBBEN, NEWS REPORTS</div>
+
+        </div>
+    </div>
+
+
+    <div id="tooltip"></div>
+    <script>
+        var bubbleTimelineChart, timeForResize;
+        document.addEventListener('DOMContentLoaded', function () {
+            bubbleTimelineChart = new BubbleTimelineChart('bubbleEle');
+        })
+        window.addEventListener("resize", function () {
+            clearTimeout(timeForResize);
+            timeForResize = setTimeout(() => {
+                bubbleTimelineChart.resize();
+            }, 100);
+        });
+
+    </script>
+
+</body>
+
+<script>
+
+</script>
+
+</html>
